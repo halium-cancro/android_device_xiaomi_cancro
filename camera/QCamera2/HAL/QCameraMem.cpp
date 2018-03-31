@@ -1137,6 +1137,7 @@ int QCameraVideoMemory::closeNativeHandle(const void *data)
 
     const media_metadata_buffer *packet =
             (const media_metadata_buffer *)data;
+#ifdef USE_MEDIA_EXTENSIONS
     if ((packet != NULL) && (packet->eType ==
             kMetadataBufferTypeNativeHandleSource)
             && (packet->pHandle)) {
@@ -1146,6 +1147,17 @@ int QCameraVideoMemory::closeNativeHandle(const void *data)
        ALOGE("Invalid Data. Could not release");
         return BAD_VALUE;
     }
+#else
+//    if ((packet != NULL) && (packet->buffer_type ==
+//            kMetadataBufferTypeNativeHandleSource)
+//            && (packet->meta_handle)) {
+//        native_handle_close(packet->meta_handle);
+//        native_handle_delete(packet->meta_handle);
+//    } else {
+//       ALOGE("Invalid Data. Could not release");
+//        return BAD_VALUE;
+//    }
+#endif
    return rc;
 }
 
