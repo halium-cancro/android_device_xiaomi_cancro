@@ -35,7 +35,6 @@ etc/android_model_facea.dat
 etc/android_model_faceg.dat
 etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin
 etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin.pca
-lib/hw/camera.vendor.msm8974.so
 lib/libc2dcolorconvert.so
 lib/libchromatix_imx135_liveshot.so
 lib/libchromatix_imx214_liveshot.so
@@ -45,10 +44,7 @@ lib/libchromatix_imx224_liveshot.so
 lib/libchromatix_imx225_liveshot.so
 lib/libchromatix_imx226_liveshot.so
 lib/libchromatix_s5k3m2_liveshot.so
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
 lib/libOmxVenc.so
-lib/libqomx_core.so
 lib/libRecoFace.so
 vendor/lib/libAKM8963.so
 vendor/lib/libactuator_ad5823.so
