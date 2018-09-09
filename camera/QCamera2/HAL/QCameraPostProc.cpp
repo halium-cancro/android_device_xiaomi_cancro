@@ -689,7 +689,7 @@ int32_t QCameraPostProcessor::processData(mm_camera_super_buf_t *frame)
         return UNKNOWN_ERROR;
     }
 
-    if (m_parent->needReprocess()) {
+    /*if (m_parent->needReprocess()) {
         if ((!m_parent->isLongshotEnabled() &&
              !m_parent->m_stateMachine.isNonZSLCaptureRunning()) ||
             (m_parent->isLongshotEnabled() &&
@@ -702,7 +702,8 @@ int32_t QCameraPostProcessor::processData(mm_camera_super_buf_t *frame)
         CDBG_HIGH("%s: need reprocess", __func__);
         // enqueu to post proc input queue
         m_inputPPQ.enqueue((void *)frame);
-    } else if (m_parent->mParameters.isNV16PictureFormat() ||
+    } else */
+    if (m_parent->mParameters.isNV16PictureFormat() ||
         m_parent->mParameters.isNV21PictureFormat()) {
         //check if raw frame information is needed.
         if(m_parent->mParameters.isYUVFrameInfoNeeded())
