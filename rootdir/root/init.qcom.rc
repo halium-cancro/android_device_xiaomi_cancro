@@ -547,14 +547,30 @@ service netmgrd /system/bin/netmgrd
     user root
     group radio
 
-service sensors /system/bin/sensors.qcom
-    class main
-    user root
-    group root
+#service sensors /system/bin/sensors.qcom
+    #class main
+    #user root
+    #group root
 
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
     stop netmgrd
+
+service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
+    class main
+    user root
+    group root
+    oneshot
+
+on property:init.svc.sensorservice=running
+    start unblock_wakelock
+
+service unblock_wakelock /system/bin/sh /system/etc/unblock_wakelock.sh
+    class main
+    user root
+    group root
+    oneshot
+    disabled
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.

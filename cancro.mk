@@ -21,7 +21,8 @@ PRODUCT_PACKAGES += \
 # QCOM Config Script
 PRODUCT_PACKAGES += \
     hsic.control.bt.sh \
-    init.qcom.bt.sh \
+    #init.qcom.bt.sh \
+    init_wlan_bt.sh \
     init.qcom.fm.sh \
     init.qcom.modem_links.sh \
     init.qcom.post_boot.sh \
@@ -256,6 +257,18 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.software.print.xml:system/etc/permissions/android.software.print.xml
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sensors.wl_dis=true
+
+#New added by me
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/root/unblock_wakelock.sh:system/etc/unblock_wakelock.sh \
+    $(LOCAL_PATH)/rootdir/etc/init_wlan_bt.sh:system/etc/init_wlan_bt.sh \
+    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
+    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-cancro.xml \
+    $(LOCAL_PATH)/ubuntu/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/audio.d/apparmor-easyprof-ubuntu_android \
+    $(LOCAL_PATH)/ubuntu/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android
+
 # Screen density
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -272,3 +285,5 @@ $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk
 
 # call the proprietary setup
 $(call inherit-product, vendor/xiaomi/cancro/cancro-vendor.mk)
+
+$(call inherit-product, device/xiaomi/cancro/mdt.mk)
