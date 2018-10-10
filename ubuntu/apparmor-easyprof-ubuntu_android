@@ -1,0 +1,5 @@
+# weird hack for some device
+  /proc/cmdline r,
+  /usr/lib/arm-linux-gnueabihf/qt5/qml/QtGraphicalEffects/* m,
+  /usr/lib/arm-linux-gnueabihf/libhybris/linker/n.so m,
+  /dev/tty r,
